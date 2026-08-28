@@ -1,0 +1,145 @@
+/* .root aplica a TODA la aplicación (es el contenedor raíz) */
+.root {
+    -fx-font-family: "Segoe UI";    /* tipo de letra global */
+    -fx-background-color: #F4F7FA;  /* color de fondo de la ventana */
+}
+
+
+/* Título principal de la ventana */
+.titulo-principal {
+    -fx-font-size: 24px;        /* tamaño de la letra */
+    -fx-font-weight: bold;      /* negrita */
+    -fx-text-fill: #1F3A5F;     /* color del texto (azul oscuro) */
+}
+
+/* Subtítulo (texto secundario) */
+.subtitulo {
+    -fx-font-size: 14px;
+    -fx-text-fill: #5F6B7A;     /* gris azulado */
+}
+
+/* Título de cada sección o tarjeta */
+.titulo-seccion {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #234E70;
+}
+
+/* Tarjeta: un panel blanco con bordes redondeados */
+.tarjeta {
+    -fx-background-color: white;      /* fondo blanco */
+    -fx-background-radius: 12;        /* esquinas redondeadas del fondo */
+    -fx-border-radius: 12;            /* esquinas redondeadas del borde */
+    -fx-border-color: #D9E2EC;        /* color del borde */
+    -fx-padding: 18;                  /* espacio interior alrededor del contenido */
+}
+
+/* text-field (cajas de texto) y combo-box (listas) */
+.text-field,
+.combo-box {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #C9D3DD;
+    -fx-background-color: white;
+}
+
+/* text-field (cajas de texto) y combo-box (listas) */
+.text-field,
+.combo-box {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #C9D3DD;
+    -fx-background-color: white;
+}
+
+/* Estado :focused = cuando el usuario hace clic en el campo */
+.text-field:focused,
+.combo-box:focused {
+    -fx-border-color: #2F80ED;   /* el borde se pone azul */
+    -fx-border-width: 1.5;       /* y un poco más grueso */
+}
+
+
+
+
+
+
+
+
+/* Estilos comunes a todos los botones */
+.button {
+    -fx-background-radius: 7;   /* esquinas redondeadas */
+    -fx-cursor: hand;           /* cursor de "manito" al pasar el mouse */
+    -fx-font-weight: bold;      /* texto en negrita */
+    -fx-padding: 7 14 7 14;     /* 7px arriba/abajo, 14px izquierda/derecha */
+}
+
+/* Registrar: azul */
+.boton-registrar {
+    -fx-background-color: #2D9CDB;
+    -fx-text-fill: white;
+}
+
+/* Editar: amarillo (texto oscuro para que se lea) */
+.boton-editar {
+    -fx-background-color: #F2C94C;
+    -fx-text-fill: #333333;
+}
+
+/* Eliminar: rojo */
+.boton-eliminar {
+    -fx-background-color: #EB5757;
+    -fx-text-fill: white;
+}
+
+/* Limpiar: gris claro */
+.boton-limpiar {
+    -fx-background-color: #E0E6ED;
+    -fx-text-fill: #333333;
+}
+
+/* Iniciar ruta: verde */
+.boton-ruta {
+    -fx-background-color: #27AE60;
+    -fx-text-fill: white;
+}
+
+/* Finalizar ruta: naranja */
+.boton-finalizar {
+    -fx-background-color: #F2994A;
+    -fx-text-fill: white;
+}
+
+/* Mantenimiento: morado */
+.boton-mantenimiento {
+    -fx-background-color: #6C63FF;
+    -fx-text-fill: white;
+}
+
+/* La tabla completa */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #D9E2EC;
+    -fx-border-radius: 8;
+}
+
+/* La fila de encabezados (columna) */
+.table-view .column-header {
+    -fx-background-color: #1F3A5F;   /* fondo azul oscuro */
+}
+
+/* El texto dentro de cada encabezado */
+.table-view .column-header .label {
+    -fx-text-fill: white;            /* texto blanco */
+    -fx-font-weight: bold;
+}
+
+/* Etiqueta que muestra cuántos vehículos están en mantenimiento */
+.estado-mantenimiento {
+    -fx-background-color: #E8F1FA;   /* fondo azul muy claro */
+    -fx-background-radius: 8;
+    -fx-padding: 8 12 8 12;          /* relleno interior */
+    -fx-text-fill: #1F3A5F;          /* texto azul oscuro */
+    -fx-font-weight: bold;
+}
+
