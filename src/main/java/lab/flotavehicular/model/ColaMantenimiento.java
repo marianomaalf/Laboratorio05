@@ -40,6 +40,20 @@ public class ColaMantenimiento<T extends Vehiculo> {
         filaDeEspera.offer(vehiculo);
     }
 
+    public void restaurarPendiente(T vehiculo) {
+        // Regla: no se puede restaurar un vehículo que ya está en mantenimiento
+    if (vehiculo.getEstado() == EstadoVehiculo.TALLER && !filaDeEspera.contains(vehiculo)) {
+            throw new IllegalStateException(
+                    "El vehículo ya se encuentra en mantenimiento."
+            );
+        }
+
+        filaDeEspera.offer(vehiculo);
+    }
+
+
+
+
     // Atender al primer vehículo de la cola (poll lo quita del frente)
     public T atenderSiguiente() {
 
