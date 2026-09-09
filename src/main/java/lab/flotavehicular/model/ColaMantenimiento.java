@@ -1,6 +1,6 @@
 package lab.flotavehicular.model;
 
-import lab.flotavehicular.EstadoVehiculo;
+import lab.flotavehicular.model.EstadoVehiculo;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -1,7 +1,7 @@
 package lab.flotavehicular.model;
 
-import lab.flotavehicular.EstadoVehiculo;
-import lab.flotavehicular.TipoVehiculo;
+import lab.flotavehicular.model.EstadoVehiculo;
+import lab.flotavehicular.model.TipoVehiculo;
 
 public abstract class Vehiculo implements Mantenible {
 

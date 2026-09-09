@@ -1,4 +1,4 @@
-package lab.flotavehicular;
+package lab.flotavehicular.model;
 
 public enum EstadoVehiculo {
 
