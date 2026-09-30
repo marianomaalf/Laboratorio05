@@ -32,7 +32,13 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -43,61 +49,240 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.flotavehiculare.controller.FlotaController">
-  <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-            <HBox layoutX="5.0" layoutY="14.0" prefHeight="123.0" prefWidth="631.0">
+<VBox prefHeight="826.0" prefWidth="1104.0" stylesheets="@../assets/css/style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lab.flotavehicular.controller.FlotaController">
+   <children>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="805.0" prefWidth="1080.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="104.0" prefWidth="1104.0">
                <children>
-                  <ImageView fitHeight="87.0" fitWidth="122.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="104.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
                      <image>
                         <Image url="@../assets/images/flota.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                     </HBox.margin>
                   </ImageView>
-                  <VBox prefHeight="123.0" prefWidth="537.0" styleClass="titulo-principal">
+                  <VBox alignment="TOP_CENTER" prefHeight="104.0" prefWidth="821.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label alignment="CENTER" prefHeight="61.0" prefWidth="425.0" text="Gestión de Flota Vehícular" />
-                        <Label alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="47.0" prefWidth="402.0" text="Adminstrador y operaciones de la Flota">
+                        <Label styleClass="titulo-principal" text="Gestión de Flota Vehicular">
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </VBox.margin>
                            <font>
-                              <Font size="11.0" />
+                              <Font size="22.0" />
                            </font>
                         </Label>
+                        <Label alignment="CENTER_RIGHT" styleClass="subtitulo" text="Administración y operaciones de la flotilla.">
+                           <font>
+                              <Font name="Bodoni MT" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox layoutY="104.0" prefHeight="520.0" prefWidth="1078.0">
+               <children>
+                  <VBox prefHeight="520.0" prefWidth="406.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="56.0" prefWidth="383.0" styleClass="titulo-seccion" text="Datos del Vehículo" textAlignment="CENTER" />
+                        <GridPane prefHeight="414.0" prefWidth="316.0" VBox.vgrow="ALWAYS">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="155.0" minWidth="10.0" prefWidth="103.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="219.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="35.0" text="Placa" />
+                              <Label text="Marca" GridPane.rowIndex="1" />
+                              <Label text="Kilometraje" GridPane.rowIndex="2" />
+                              <Label text="Tipo Vehículo" GridPane.rowIndex="3" />
+                              <Label fx:id="lblCombustible" text="Combustible" GridPane.rowIndex="4" />
+                              <Label fx:id="lblBateria" text="Batería" GridPane.rowIndex="5" />
+                              <Label fx:id="lblTonelaje" text="Tonelaje Máximo" GridPane.rowIndex="6" />
+                              <Label fx:id="lblTipoCarga" text="Tipo de Carga" GridPane.rowIndex="7" />
+                              <TextField fx:id="txtPlaca" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtMarca" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="txtKilometraje" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="cbxTipoVehiculo" onAction="#cambiarTipoVehiculo" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtCombustible" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="txtBateria" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <TextField fx:id="txtTonelaje" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <ComboBox fx:id="cbxTipoCarga" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="15.0" right="20.0" />
+                           </VBox.margin>
+                        </GridPane>
+                        <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="54.0" prefWidth="803.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#registrarVehiculo" styleClass="boton-registrar" text="Registrar" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#editarVehiculo" styleClass="boton-editar" text="Editar" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#eliminarVehiculo" styleClass="boton-eliminar" text="Eliminar" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#limpiarFormulario" prefHeight="25.0" prefWidth="72.0" styleClass="boton-limpiar" text="Limpiar" textAlignment="CENTER">
+                                 <HBox.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="520.0" prefWidth="727.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="66.0" prefWidth="704.0" styleClass="titulo-seccion" text="Vehículos Registrados">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <TableView fx:id="tablaVehiculos" prefHeight="504.0" prefWidth="727.0" VBox.vgrow="ALWAYS">
+                           <columns>
+                              <TableColumn fx:id="colPlaca" prefWidth="119.0" text="Placa" />
+                              <TableColumn fx:id="colMarca" prefWidth="136.0" text="Marca" />
+                              <TableColumn fx:id="colTipo" prefWidth="140.0" text="Tipo" />
+                              <TableColumn fx:id="colKilometraje" minWidth="0.0" prefWidth="142.0" text="Kilometraje" />
+                              <TableColumn fx:id="colEstado" prefWidth="161.0" text="Estado" />
+                           </columns>
+                        </TableView>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" />
-            <VBox layoutX="8.0" layoutY="139.0" prefHeight="284.0" prefWidth="216.0">
+            <VBox layoutX="11.0" layoutY="633.0" prefHeight="176.0" prefWidth="1067.0" styleClass="tarjeta">
                <children>
-                  <Label alignment="CENTER" prefHeight="15.0" prefWidth="163.0" text="Datis del vehículo" />
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <Label alignment="CENTER" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" styleClass="titulo-seccion" text="Operaciones de Flota">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="33.0" prefWidth="1078.0">
                      <children>
-                        <Label fx:id="lblPlaca" prefHeight="15.0" prefWidth="70.0" text="Placa" />
-                        <Label text="Marca" GridPane.rowIndex="1" />
-                        <Label text="Kilometraje" GridPane.rowIndex="2" />
-                        <Label text="Tipo Vehículo" GridPane.rowIndex="3" />
-                        <Label fx:id="lblCombustible" prefHeight="15.0" prefWidth="103.0" text="Combustible" GridPane.rowIndex="4" />
-                        <Label text="Batería" GridPane.rowIndex="5" />
-                        <Label GridPane.rowIndex="6" />
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#iniciarRuta" styleClass="boton-ruta" text="Iniciar Ruta" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/images/inciar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#finalizarRuta" styleClass="boton-finalizar" text="Finalizar Ruta" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/images/detener.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#enviarMantenimiento" styleClass="boton-mantenimiento" text="Enviar a Mantenimiento" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/images/mantenimiento.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button contentDisplay="RIGHT" layoutX="106.0" layoutY="20.0" mnemonicParsing="false" onAction="#atenderMantenimiento" text="Atender Mantenimiento" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/images/atender.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
-                  </GridPane>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="lblPendientesMantenimiento" alignment="CENTER" contentDisplay="RIGHT" nodeOrientation="RIGHT_TO_LEFT" styleClass="estado-mantenimiento" text="Pendientes en Matenimiento: 0" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="37.0" prefWidth="953.0">
+                     <children>
+                        <Label fx:id="lblTonelaje1" prefHeight="23.0" prefWidth="79.0" text="Peso de Carga:">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="txtCargaActual" prefHeight="25.0" prefWidth="63.0">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="21.0" prefWidth="52.0" text="toneladas">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Button mnemonicParsing="false" onAction="#cargarMercancia" prefHeight="29.0" prefWidth="157.0" text="Cargar Mercancía">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="13.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/images/cargar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </HBox>
                </children>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" />
+               </padding>
             </VBox>
-      </children>
-    </AnchorPane>
-  </children>
+         </children>
+      </AnchorPane>
+   </children>
 </VBox>

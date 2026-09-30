@@ -6,6 +6,7 @@ module lab.flotavehicular {
     requires javafx.web;
 
     // Librerías adicionales seleccionadas al crear el proyecto (Paso 3.3)
+
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
