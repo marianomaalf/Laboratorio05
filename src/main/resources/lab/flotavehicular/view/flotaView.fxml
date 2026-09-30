@@ -185,19 +185,19 @@
                   </Label>
                   <HBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="33.0" prefWidth="1078.0">
                      <children>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#iniciarRuta" styleClass="boton-ruta" text="Iniciar Ruta" textAlignment="CENTER">
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#iniciarRuta" prefHeight="31.0" prefWidth="129.0" styleClass="boton-ruta" text="Iniciar Ruta" textAlignment="CENTER">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <graphic>
-                              <ImageView fitHeight="13.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="17.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../assets/images/inciar.png" />
+                                    <Image url="@../assets/images/iniciar.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#finalizarRuta" styleClass="boton-finalizar" text="Finalizar Ruta" textAlignment="CENTER">
+                        <Button contentDisplay="RIGHT" mnemonicParsing="false" onAction="#finalizarRuta" prefHeight="39.0" prefWidth="135.0" styleClass="boton-finalizar" text="Finalizar Ruta" textAlignment="CENTER">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
@@ -214,7 +214,7 @@
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <graphic>
-                              <ImageView fitHeight="13.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="16.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/images/mantenimiento.png" />
                                  </image>
@@ -226,7 +226,7 @@
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <graphic>
-                              <ImageView fitHeight="13.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="18.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../assets/images/atender.png" />
                                  </image>
