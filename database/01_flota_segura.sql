@@ -55,6 +55,49 @@ DROP PROCEDURE IF EXISTS sp_insertar_vehiculo;
 DROP PROCEDURE IF EXISTS sp_actualizar_vehiculo;
 DROP PROCEDURE IF EXISTS sp_eliminar_vehiculo;
 
-DELIMITER $$      # cambiamos el terminador a $$
-   ... aquí van los CREATE PROCEDURE ...
-DELIMITER ;       # lo devolvemos a ;
+DELIMITER $$
+
+CREATE DEFINER='flota_definer'@'localhost' PROCEDURE sp_listar_vehiculos()
+SQL SECURITY DEFINER
+BEGIN
+SELECT placa, marca, kilometraje, estado, tipo, nivel_energia, ciclos_carga,
+       tonelaje_maximo, carga_actual, tipo_carga
+FROM vehiculo ORDER BY placa;
+END$$
+
+CREATE DEFINER='flota_definer'@'localhost' PROCEDURE sp_insertar_vehiculo(
+  IN p_placa VARCHAR(12), IN p_marca VARCHAR(80), IN p_kilometraje INT,
+  IN p_estado VARCHAR(20), IN p_tipo VARCHAR(20), IN p_energia DECIMAL(5,2),
+  IN p_ciclos INT, IN p_tonelaje DECIMAL(8,2), IN p_carga DECIMAL(8,2), IN p_tipo_carga VARCHAR(20))
+SQL SECURITY DEFINER
+BEGIN
+INSERT INTO vehiculo(placa,marca,kilometraje,estado,tipo,nivel_energia,ciclos_carga,tonelaje_maximo,carga_actual,tipo_carga)
+VALUES (p_placa,p_marca,p_kilometraje,p_estado,p_tipo,p_energia,p_ciclos,p_tonelaje,p_carga,p_tipo_carga);
+END$$
+
+CREATE DEFINER='flota_definer'@'localhost' PROCEDURE sp_actualizar_vehiculo(
+  IN p_placa VARCHAR(12), IN p_marca VARCHAR(80), IN p_kilometraje INT,
+  IN p_estado VARCHAR(20), IN p_tipo VARCHAR(20), IN p_energia DECIMAL(5,2),
+  IN p_ciclos INT, IN p_tonelaje DECIMAL(8,2), IN p_carga DECIMAL(8,2), IN p_tipo_carga VARCHAR(20))
+SQL SECURITY DEFINER
+BEGIN
+UPDATE vehiculo SET marca=p_marca, kilometraje=p_kilometraje, estado=p_estado, tipo=p_tipo,
+                    nivel_energia=p_energia, ciclos_carga=p_ciclos, tonelaje_maximo=p_tonelaje,
+                    carga_actual=p_carga, tipo_carga=p_tipo_carga WHERE placa=p_placa;
+IF ROW_COUNT() = 0 AND NOT EXISTS (SELECT 1 FROM vehiculo WHERE placa=p_placa) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='No existe un vehículo con esa placa';
+END IF;
+END$$
+
+CREATE DEFINER='flota_definer'@'localhost' PROCEDURE sp_eliminar_vehiculo(IN p_placa VARCHAR(12))
+SQL SECURITY DEFINER
+BEGIN
+DELETE FROM vehiculo WHERE placa=p_placa;
+IF ROW_COUNT() = 0 THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT='No existe un vehículo con esa placa'; END IF;
+END$$
+
+-- Dar permisos sobre las tablas al DEFINER
+GRANT SELECT, INSERT, UPDATE, DELETE ON flota_vehicular.vehiculo TO 'flota_definer'@'localhost';
+
+-- IMPORTANTE: El DEFINER también necesita permiso EXECUTE para invocar procedimientos SQL SECURITY DEFINER
+GRANT EXECUTE ON flota_vehicular.* TO 'flota_definer'@'localhost';
