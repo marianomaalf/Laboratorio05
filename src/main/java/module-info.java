@@ -2,8 +2,14 @@ module lab.flotavehicular {
 
     // Módulos de JavaFX incluidos en el proyecto
     requires javafx.controls;
+    requires java.sql;            // AGREGAR: habilita JDBC (Connection, CallableStatement...)
+    // OJO: el nombre del MÓDULO no es com.mysql.cj (ese es el nombre del paquete).
+    // mysql-connector-j-9.4.0.jar no trae module-info ni Automatic-Module-Name,
+    // así que JPMS deriva el nombre automático del nombre del jar: mysql.connector.j
+    requires mysql.connector.j;   // AGREGAR: habilita el driver de MySQL
     requires javafx.fxml;
     requires javafx.web;
+
 
     // Librerías adicionales seleccionadas al crear el proyecto (Paso 3.3)
 

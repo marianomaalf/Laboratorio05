@@ -5,7 +5,7 @@ import lab.flotavehicular.factory.VehiculoFactory;
 import lab.flotavehicular.model.*;
 import lab.flotavehicular.repository.PersistenciaException;
 import lab.flotavehicular.repository.RepositorioVehiculo;
-import lab.flotavehicular.repository.RepositorioVehiculoTxt;
+import lab.flotavehicular.repository.RepositorioVehiculoMySQL;
 import lab.flotavehicular.service.FlotaService;
 
 import javafx.fxml.FXML;
@@ -82,9 +82,7 @@ public class FlotaController {
 
 
     public FlotaController() {
-        RepositorioVehiculo repositorio = new RepositorioVehiculoTxt(
-                Path.of("datos", "vehiculos.txt")
-        );
+        RepositorioVehiculo repositorio = new RepositorioVehiculoMySQL();
         this.flota = new FlotaService(repositorio);
         this.colaMantenimiento = new ColaMantenimiento<>();
 
@@ -480,7 +478,7 @@ public class FlotaController {
         try {
 
             seleccionado.iniciarRuta();
-            flota.guardarCambios();
+            flota.guardarCambios(seleccionado);
 
             actualizarTabla();
 
@@ -512,7 +510,7 @@ public class FlotaController {
         try {
 
             seleccionado.finalizarRuta();
-            flota.guardarCambios();
+            flota.guardarCambios(seleccionado);
 
             actualizarTabla();
 
@@ -552,7 +550,7 @@ public class FlotaController {
         try {
 
             colaMantenimiento.encolar(seleccionado);
-            flota.guardarCambios();
+            flota.guardarCambios(seleccionado);
 
             actualizarTabla();
             actualizarPendientesMantenimiento();
@@ -577,7 +575,7 @@ public class FlotaController {
             Vehiculo vehiculoAtendido =
                     colaMantenimiento.atenderSiguiente();
 
-            flota.guardarCambios();
+            flota.guardarCambios(vehiculoAtendido);
 
             actualizarTabla();
             actualizarPendientesMantenimiento();
@@ -628,7 +626,7 @@ public class FlotaController {
             );
 
             pesado.cargarMercancia(peso);
-            flota.guardarCambios();
+            flota.guardarCambios(pesado);
 
             txtCargaActual.clear();
 

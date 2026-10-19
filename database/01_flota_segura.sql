@@ -22,7 +22,7 @@ CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE flota_vehicular;
 
 CREATE TABLE IF NOT EXISTS vehiculo (
-                                        placa VARCHAR(12) PRIMARY KEY,
+    placa VARCHAR(12) PRIMARY KEY,
     marca VARCHAR(80) NOT NULL,
     kilometraje INT NOT NULL,
     estado ENUM('DISPONIBLE','EN_RUTA','TALLER') NOT NULL,
@@ -101,3 +101,14 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON flota_vehicular.vehiculo TO 'flota_defin
 
 -- IMPORTANTE: El DEFINER también necesita permiso EXECUTE para invocar procedimientos SQL SECURITY DEFINER
 GRANT EXECUTE ON flota_vehicular.* TO 'flota_definer'@'localhost';
+
+
+GRANT EXECUTE ON PROCEDURE flota_vehicular.sp_listar_vehiculos    TO 'flota_app'@'localhost';
+GRANT EXECUTE ON PROCEDURE flota_vehicular.sp_insertar_vehiculo   TO 'flota_app'@'localhost';
+GRANT EXECUTE ON PROCEDURE flota_vehicular.sp_actualizar_vehiculo  TO 'flota_app'@'localhost';
+GRANT EXECUTE ON PROCEDURE flota_vehicular.sp_eliminar_vehiculo    TO 'flota_app'@'localhost';
+FLUSH PRIVILEGES;
+
+CALL flota_vehicular.sp_listar_vehiculos();
+
+SELECT * FROM flota_vehicular.vehiculo;

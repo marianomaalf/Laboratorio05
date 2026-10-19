@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="FlotaApp" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="lab.flotavehicular.Main" />
+    <module name="flotavehicular" />
+    <envs>
+      <env name="FLOTA_DB_USER" value="flota_app" />
+      <env name="FLOTA_DB_PASSWORD" value="Llamadedragon05*" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
